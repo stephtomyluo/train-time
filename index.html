@@ -14,14 +14,7 @@
       crossorigin="anonymous"
     />
 
-    <!-- JQuery  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Firebase  -->
-    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
-
-    <!-- Moment.js  -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  
 
   </head>
   <body>
@@ -33,7 +26,7 @@
 
       <div class="row">
         <div class="col-lg-12">
-          <div class="card card-default">
+          <div class="card card-default mb-5">
             <div class="card-header">Current Train Schedule</div>
             <table class="table" id="trainTable">
               <thead>
@@ -94,11 +87,25 @@
                 <button class="btn btn-info" id="addTrain" type="submit">
                   Submit
                 </button>
+
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
+      <!-- JQuery  -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <!-- Firebase  -->
+      <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-database.js"></script>
+  
+  
+  
+      <!-- Moment.js  -->
+      <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+      <script src="./assets/javascript/logic.js"></script>
   </body>
 </html>

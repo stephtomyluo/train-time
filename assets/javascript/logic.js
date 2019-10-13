@@ -1,19 +1,21 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyBkN7hBxeg51ajiY_tcjIEUt7iikbP3GJw",
-    authDomain: "train-time-c54a0.firebaseapp.com",
-    databaseURL: "https://train-time-c54a0.firebaseio.com",
-    projectId: "train-time-c54a0",
-    storageBucket: "train-time-c54a0.appspot.com",
-    messagingSenderId: "772972568411",
-    appId: "1:772972568411:web:9db21b8ae9a8114c70c47e"
-  };
+  apiKey: "AIzaSyBmfnmHzvgOw7iXt724pOx2tI1ZyMwxxnM",
+  authDomain: "project-name-d2ebd.firebaseapp.com",
+  databaseURL: "https://project-name-d2ebd.firebaseio.com",
+  projectId: "project-name-d2ebd",
+  storageBucket: "project-name-d2ebd.appspot.com",
+  messagingSenderId: "149025787405",
+  appId: "1:149025787405:web:1c828b8ddc7be3ddf64f44",
+  measurementId: "G-6VK7CW4V4S"
+};
 
   firebase.initializeApp(firebaseConfig);
 
 var trainDatabase = firebase.database();
 
 // Add train button, collect and store info
-$("#addTrain").on("click", function() {
+$(document).on("click", '#addTrain', function(event) {
+  event.preventDefault();
   var trainName = $("#trainNameInput")
     .val()
     .trim();
@@ -33,6 +35,15 @@ $("#addTrain").on("click", function() {
     .trim();
 
   console.log(firstTrain);
+
+  trainInputs = {
+  trainName: trainName,
+  destination: destination,
+  firstTrain: firstTrain,
+  frequency: frequency
+}
+// Send object to firebase 
+  trainDatabase.ref().push(trainInputs)
 });
 
 // Moment.js math
@@ -41,8 +52,9 @@ trainDatabase.ref().on("child_added", function(snapshot) {
   var destination = snapshot.val().destination;
   var frequency = snapshot.val().frequency;
   var firstTrain = snapshot.val().firstTrain;
-
-  var remainder = moment().diff(momemt.unix(firstTrain), "minutes") % frequency;
+// Use .split on colon
+  
+  var remainder = moment().diff(moment.unix(firstTrain), "minutes") % frequency
   var minutes = frequency - remainder;
   var arrival = moment()
     .add(minutes, "m")
@@ -68,3 +80,27 @@ trainDatabase.ref().on("child_added", function(snapshot) {
       "</td></tr>"
   );
 });
+
+// Use .split on colon
+//  var changeInTime = firstTrain.split(":")
+//  var trainTime = moment()
+//    .hours(changeInTime[0])
+//    .minutes(changeInTime[1]);
+//    console.log(trainTime)
+//  var maxMoment = moment.max(moment(), trainTime);
+
+//  var minutes;
+//  var arrival;
+
+//  if (maxMoment === trainTime) {
+//    arrival = trainTime.format("hh:mm A");
+//    minutes = trainTime.diff(moment(), "minutes");
+//  } else {
+//    var timeDifference = moment().diff(trainTime, "minutes");
+//    var remainder = timeDifference % frequency
+//    minutes = frequency - remainder
+//    arrival = moment().add(minutes, 'm').format("hh:mm A")
+
+//    console.log(remainder);
+//    console.log(minutes);
+//    console.log(arrival);
