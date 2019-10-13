@@ -20,10 +20,9 @@
     <!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-database.js"></script>
-
     <!-- Moment.js  -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
   </head>
   <body>
     <div class="container">
@@ -39,11 +38,11 @@
             <table class="table" id="trainTable">
               <thead>
                 <tr>
-                  <th scope="col">Train Name</th>
-                  <th scope="col">Destination</th>
-                  <th scope="col">Frequency (min)</th>
-                  <th scope="col">Next Arrival</th>
-                  <th scope="col">Minutes Away</th>
+                  <th>Train Name</th>
+                  <th>Destination</th>
+                  <th>Frequency (min)</th>
+                  <th>Next Arrival</th>
+                  <th>Minutes Away</th>
                 </tr>
               </thead>
               <tbody>
@@ -63,34 +62,36 @@
             <div class="card-body">
               <form role="form">
                 <div class="form-group row">
-                  <label for="train-name-input">Train Name:</label>
+                  <label for="trainNameInput">Train Name:</label>
                   <input
                     class="form-control"
-                    id="train-name-input"
+                    id="trainNameInput"
                     type="text"
                   />
                 </div>
                 <div class="form-group row">
-                  <label for="destination-input">Destination:</label>
+                  <label for="destinationInput">Destination:</label>
                   <input
                     class="form-control"
-                    id="destination-input"
+                    id="destinationInput"
                     type="text"
                   />
                 </div>
                 <div class="form-group row">
-                  <label for="time-input"
+                  <label for="timeInput"
                     >First Train (HH:mm - military time):</label
                   >
-                  <input class="form-control" id="time-input" type="text" />
+                  <input class="form-control" id="timeInput" type="text" />
                 </div>
                 <div class="form-group row">
-                  <label for="time-input"
-                    >Frequency (min):</label
-                  >
-                  <input class="form-control" id="frequency-input" type="text" />
+                  <label for="frequencyInput">Frequency (min):</label>
+                  <input
+                    class="form-control"
+                    id="frequencyInput"
+                    type="text"
+                  />
                 </div>
-                <button class="btn btn-info" id="add-train" type="submit">
+                <button class="btn btn-info" id="addTrain" type="submit">
                   Submit
                 </button>
               </form>
