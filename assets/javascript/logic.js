@@ -10,3 +10,19 @@ var firebaseConfig = {
   };
 
   firebase.initializeApp(firebaseConfig);
+
+var trainDatabase = firebase.database();
+
+// Add train button, collect and store info 
+$('#add-train').on('click', function(){
+    var trainName = $('#train-name-input').val().trim();
+    var destination = $('#destination-input').val().trim();
+    var firstTrain = moment($('#time-input').val().trim(), 'HH:mm').subtract(10,'years').format('X');
+    var frequency = $('#frequency-input').val().trim();
+
+    console.log(firstTrain)
+})
+
+trainDatabase.ref().on('child_added', function(snapshot){
+    
+})
