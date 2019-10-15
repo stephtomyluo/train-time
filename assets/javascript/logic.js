@@ -48,7 +48,7 @@ $(document).on("click", '#addTrain', function(event) {
 
 // Moment.js math
 trainDatabase.ref().on("child_added", function(snapshot) {
-  var name = snapshot.val().name;
+  var name = snapshot.val().trainName;
   var destination = snapshot.val().destination;
   var frequency = snapshot.val().frequency;
   var firstTrain = snapshot.val().firstTrain;
@@ -75,32 +75,8 @@ trainDatabase.ref().on("child_added", function(snapshot) {
       arrival +
       "</td><td>" +
       minutes +
-      "</td><td>" +
-      minutes +
       "</td></tr>"
   );
 });
 
-// Use .split on colon
-//  var changeInTime = firstTrain.split(":")
-//  var trainTime = moment()
-//    .hours(changeInTime[0])
-//    .minutes(changeInTime[1]);
-//    console.log(trainTime)
-//  var maxMoment = moment.max(moment(), trainTime);
 
-//  var minutes;
-//  var arrival;
-
-//  if (maxMoment === trainTime) {
-//    arrival = trainTime.format("hh:mm A");
-//    minutes = trainTime.diff(moment(), "minutes");
-//  } else {
-//    var timeDifference = moment().diff(trainTime, "minutes");
-//    var remainder = timeDifference % frequency
-//    minutes = frequency - remainder
-//    arrival = moment().add(minutes, 'm').format("hh:mm A")
-
-//    console.log(remainder);
-//    console.log(minutes);
-//    console.log(arrival);
