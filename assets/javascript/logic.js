@@ -52,7 +52,6 @@ trainDatabase.ref().on("child_added", function(snapshot) {
   var destination = snapshot.val().destination;
   var frequency = snapshot.val().frequency;
   var firstTrain = snapshot.val().firstTrain;
-// Use .split on colon
   
   var remainder = moment().diff(moment.unix(firstTrain), "minutes") % frequency
   var minutes = frequency - remainder;
@@ -63,7 +62,8 @@ trainDatabase.ref().on("child_added", function(snapshot) {
   console.log(remainder);
   console.log(minutes);
   console.log(arrival);
-
+  
+// Append to table from firebase 
   $("#trainTable > tBody").append(
     "<tr><td>" +
       name +
